@@ -1,6 +1,7 @@
 // Store our API endpoint inside queryUrl
 var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson"
 
+console.log("hello world")
 // Perform a GET request to the query URL
 d3.json(queryUrl, function(data) {
     createFeatures(data.features);
@@ -15,7 +16,8 @@ function markerSize(mag) {
 // Function that will determine the color and the size of the data points
   
   function chooseColor(depth){
-      switch (depth) {
+    console.log(depth)
+      switch (true) {
       case (depth < 10):
         return "#affc08";
       case (depth >= 10):
@@ -31,6 +33,7 @@ function markerSize(mag) {
       default:
           return "black";
       }
+   
   }
 
 function createFeatures(earthquakeData) {
@@ -47,12 +50,15 @@ function createFeatures(earthquakeData) {
   
   // Create a function for the circle markers
 
-  function poinToLayer(feature, latlng) {
-    return new L.circle(latlng,           
-      {radius: markerSize(feature.properties.mag), 
-      fillcolor: chooseColor(feature.geometry.coordinates[2]),
+  function pointToLayer(feature, latlng) {
+    return L.circle(latlng,           
+      {radius: markerSize(feature.properties.mag),
+      color: "black", 
+      fillColor: chooseColor(feature.geometry.coordinates[2]),
       fillOpacity: 1,
-      stroke:false});
+      stroke:true, 
+      weight: 1
+    });
   }
   
 
@@ -60,7 +66,7 @@ function createFeatures(earthquakeData) {
   // Run the onEachFeature function once for each piece of data in the array
   var earthquakes = L.geoJSON(earthquakeData, {
       onEachFeature: onEachFeature,
-      poinToLayer: poinToLayer
+      pointToLayer: pointToLayer
     });
 
   // Sending our earthquakes layer to the createMap function
@@ -101,8 +107,8 @@ function createMap(earthquakes) {
         center: [
           37.09, -95.71
         ],
-        zoom: 4,
-        layers: [streetmap, earthquakes]
+        zoom: 3,
+        layers: [darkmap, earthquakes]
       });
 
     // Create  a layer control
