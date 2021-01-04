@@ -8,3 +8,21 @@ body,
 html {
   height: 100%;
 }
+
+/* CSS from the Leaflet-Choropleth documentation */
+
+.legend {
+  padding: 16px 18px;
+  line-height: 18px;
+  color: #555;
+  font: 14px Arial;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+}
+.legend i {
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin-right: 5px;
+
+}
