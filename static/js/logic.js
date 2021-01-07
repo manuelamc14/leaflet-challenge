@@ -13,29 +13,23 @@ function markerSize(mag) {
   return mag * 30000;
 }
 
-// Function that will determine the color and the size of the data points
+// Function that will determine the color of the data points
   
-  function chooseColor(depth){
-    console.log(depth)
-      switch (true) {
-      case (depth < 10):
-        return "#affc08";
-      case (depth >= 10):
-        return "#f0fc08";
-      case (depth >= 30):
-        return "#fcc708";
-      case (depth >= 50):
-        return "#fca308";
-      case (depth >= 70):
-        return "#fc6e08";
-      case (depth >= 90):
-        return "#fc3d08";
-      default:
-          return "black";
-      }
-   
+  function chooseColor(depth) {
+    if (depth <= 10) {
+        return "#ADFF2F";
+    } else if (depth <= 30) {
+        return "#9ACD32";
+    } else if (depth <= 50) {
+        return "#FFFF00";
+    } else if (depth <= 70) {
+        return "#ffd700";
+    } else if (depth <= 90) {
+        return "#FFA500";
+    } else {
+        return "#FF0000";
+    };
   }
-
 function createFeatures(earthquakeData) {
 
   // Define a function we want to run once for each feature in the features array
@@ -106,7 +100,7 @@ function createMap(earthquakes) {
           37.09, -95.71
         ],
         zoom: 3,
-        layers: [darkmap, earthquakes]
+        layers: [lightmap, earthquakes]
       });
 
     // Create  a layer control
