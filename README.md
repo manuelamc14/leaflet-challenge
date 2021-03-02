@@ -23,4 +23,4 @@ The project aimed to create a map using Leaflet to plot all the earthquakes arou
 
 ## Image
 
-![ScreenShot](https://github.com/manuelamc14/leaflet-challenge/tree/main/images)
+![ScreenShot](https://github.com/manuelamc14/leaflet-challenge/blob/main/images/map.png)
